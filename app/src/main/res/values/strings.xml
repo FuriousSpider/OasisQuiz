@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">OasisQuiz</string>
+
+    <string name="image_description">Image Placeholder</string>
+
+    <!--MENU-->
+    <string name="activity_menu_start">Start</string>
 </resources>
