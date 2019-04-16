@@ -1,6 +1,7 @@
 package com.furiousspider.oasisquiz.ui.base
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 abstract class BaseActivity<P : Presenter>: AppCompatActivity(), BaseView {
@@ -16,5 +17,14 @@ abstract class BaseActivity<P : Presenter>: AppCompatActivity(), BaseView {
         presenter.onCreate()
     }
 
+    override fun onDestroy() {
+        presenter.onDestroy()
+        super.onDestroy()
+    }
+
     protected abstract fun createPresenter(): P
+
+    fun showError(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
 }
