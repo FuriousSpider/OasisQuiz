@@ -13,7 +13,9 @@ class SplashActivity : BaseActivity<SplashPresenter>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+    }
 
+    fun initRealm() {
         RealmProvider.init(applicationContext)
     }
 
