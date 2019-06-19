@@ -5,4 +5,7 @@
 
     <!--MENU-->
     <string name="activity_menu_start">Start</string>
+
+    <!--SINGLE-QUICK-->
+    <string name="activity_game_single_quick_score_label">Score: </string>
 </resources>

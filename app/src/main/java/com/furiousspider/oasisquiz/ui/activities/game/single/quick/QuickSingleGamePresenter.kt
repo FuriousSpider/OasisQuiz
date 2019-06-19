@@ -1,5 +1,6 @@
 package com.furiousspider.oasisquiz.ui.activities.game.single.quick
 
+import com.furiousspider.oasisquiz.ui.activities.game.single.quick.model.QuickSingleGameModelCreator
 import com.furiousspider.oasisquiz.ui.base.BasePresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -15,9 +16,10 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe({
-                //TODO: Implement success
+                view?.loadItems(it)
             },{
-                view?.showError("Error loading data")
+                view?.showError("QuickSingleGamePresenter - loadData - error loading question")
+                it.printStackTrace()
             }))
     }
 }
