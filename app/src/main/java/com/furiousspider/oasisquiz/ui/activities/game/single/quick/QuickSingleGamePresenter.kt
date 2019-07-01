@@ -35,7 +35,7 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
     fun goToNextScreen() {
         view?.let {
             if (it.isItemLast()) {
-                view?.showSummaryScreen()
+                view?.showSummaryScreen(state.score, state.time)
             } else {
                 view?.goToNextQuestion()
             }

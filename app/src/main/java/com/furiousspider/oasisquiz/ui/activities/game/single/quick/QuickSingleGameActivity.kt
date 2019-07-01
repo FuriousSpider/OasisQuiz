@@ -5,6 +5,7 @@ import com.furiousspider.oasisquiz.R
 import com.furiousspider.oasisquiz.ui.activities.game.single.quick.model.QuickSingleGameModel
 import com.furiousspider.oasisquiz.ui.activities.game.single.quick.viewpager.QuickSingleGamePagerAdapter
 import com.furiousspider.oasisquiz.ui.base.BaseActivity
+import com.furiousspider.oasisquiz.utils.Router
 import kotlinx.android.synthetic.main.activity_game_single_quick.*
 
 class QuickSingleGameActivity : BaseActivity<QuickSingleGamePresenter>() {
@@ -41,7 +42,7 @@ class QuickSingleGameActivity : BaseActivity<QuickSingleGamePresenter>() {
         activityGameSingleQuickViewPager.goToNextPage()
     }
 
-    fun showSummaryScreen() {
-        showError("It is the last screen")
+    fun showSummaryScreen(score: Int, time: Int) {
+        Router.startSummaryActivity(this, score, time)
     }
 }

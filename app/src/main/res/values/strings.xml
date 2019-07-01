@@ -8,4 +8,10 @@
 
     <!--SINGLE-QUICK-->
     <string name="activity_game_single_quick_score_label">Score: %1$d</string>
+
+    <!--SUMMARY-->
+    <string name="activity_summary_score">Your score: %1$d</string>
+    <string name="activity_summary_time">Your time: %1$s s</string>
+    <string name="activity_summary_play_again_button">Play again</string>
+    <string name="activity_summary_exit_button">Go back to menu</string>
 </resources>
