@@ -24,12 +24,24 @@ class QuickSingleGameActivity : BaseActivity<QuickSingleGamePresenter>() {
     }
 
     private fun onCorrectAnswerClick() {
-        //TODO: implement
-        showError("Correct")
+        presenter.onCorrectAnswerClick()
     }
 
     private fun onIncorrectAnswerClick() {
-        //TODO: implement
-        showError("Incorrect")
+        presenter.goToNextScreen()
+    }
+
+    fun setScore(score: Int) {
+        activityGameSingleQuickScore.text = getString(R.string.activity_game_single_quick_score_label, score)
+    }
+
+    fun isItemLast(): Boolean = activityGameSingleQuickViewPager.isItemLast()
+
+    fun goToNextQuestion() {
+        activityGameSingleQuickViewPager.goToNextPage()
+    }
+
+    fun showSummaryScreen() {
+        showError("It is the last screen")
     }
 }

@@ -11,12 +11,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="@string/activity_game_single_quick_score_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.viewpager.widget.ViewPager
+    <com.furiousspider.oasisquiz.ui.views.NonSwipeableViewPager
         android:id="@+id/activityGameSingleQuickViewPager"
         android:layout_width="0dp"
         android:layout_height="0dp"
