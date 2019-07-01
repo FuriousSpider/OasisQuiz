@@ -41,4 +41,8 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
             }
         }
     }
+
+    fun goToMenu() {
+        view?.goToMenu()
+    }
 }

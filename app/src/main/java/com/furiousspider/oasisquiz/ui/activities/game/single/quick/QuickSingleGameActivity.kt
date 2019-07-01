@@ -5,6 +5,7 @@ import com.furiousspider.oasisquiz.R
 import com.furiousspider.oasisquiz.ui.activities.game.single.quick.model.QuickSingleGameModel
 import com.furiousspider.oasisquiz.ui.activities.game.single.quick.viewpager.QuickSingleGamePagerAdapter
 import com.furiousspider.oasisquiz.ui.base.BaseActivity
+import com.furiousspider.oasisquiz.ui.views.ReturnDialog
 import com.furiousspider.oasisquiz.utils.Router
 import kotlinx.android.synthetic.main.activity_game_single_quick.*
 
@@ -44,5 +45,14 @@ class QuickSingleGameActivity : BaseActivity<QuickSingleGamePresenter>() {
 
     fun showSummaryScreen(score: Int, time: Int) {
         Router.startSummaryActivity(this, score, time)
+    }
+
+    fun goToMenu() {
+        Router.startMenuActivity(this)
+    }
+
+    override fun onBackPressed() {
+        val dialog = ReturnDialog(this, presenter::goToMenu)
+        dialog.show()
     }
 }
