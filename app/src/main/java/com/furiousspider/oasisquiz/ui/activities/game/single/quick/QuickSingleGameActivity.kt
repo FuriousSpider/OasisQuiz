@@ -1,6 +1,7 @@
 package com.furiousspider.oasisquiz.ui.activities.game.single.quick
 
 import android.os.Bundle
+import androidx.viewpager.widget.ViewPager
 import com.furiousspider.oasisquiz.R
 import com.furiousspider.oasisquiz.ui.activities.game.single.quick.model.QuickSingleGameModel
 import com.furiousspider.oasisquiz.ui.activities.game.single.quick.viewpager.QuickSingleGamePagerAdapter
@@ -15,6 +16,22 @@ class QuickSingleGameActivity : BaseActivity<QuickSingleGamePresenter>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_single_quick)
+
+        activityGameSingleQuickViewPager.clearOnPageChangeListeners()
+        activityGameSingleQuickViewPager.addOnPageChangeListener(onPageChangeListener)
+    }
+
+    override fun onBackPressed() {
+        val dialog = ReturnDialog(this, presenter::goToMenu)
+        dialog.show()
+    }
+
+    private val onPageChangeListener = object : ViewPager.OnPageChangeListener {
+        override fun onPageScrollStateChanged(state: Int) {}
+        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+        override fun onPageSelected(position: Int) {
+            presenter.resetCountDownTimer()
+        }
     }
 
     fun loadItems(items: List<QuickSingleGameModel>) {
@@ -43,7 +60,7 @@ class QuickSingleGameActivity : BaseActivity<QuickSingleGamePresenter>() {
         activityGameSingleQuickViewPager.goToNextPage()
     }
 
-    fun showSummaryScreen(score: Int, time: Int) {
+    fun showSummaryScreen(score: Int, time: Double) {
         Router.startSummaryActivity(this, score, time)
     }
 
@@ -51,8 +68,7 @@ class QuickSingleGameActivity : BaseActivity<QuickSingleGamePresenter>() {
         Router.startMenuActivity(this)
     }
 
-    override fun onBackPressed() {
-        val dialog = ReturnDialog(this, presenter::goToMenu)
-        dialog.show()
+    fun updateCountDownTimer(time: Long) {
+        activityGameSingleQuickTimer.text = time.toString()
     }
 }

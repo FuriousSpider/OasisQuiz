@@ -8,6 +8,7 @@
 
     <!--SINGLE-QUICK-->
     <string name="activity_game_single_quick_score_label">Score: %1$d</string>
+    <string name="activity_game_single_quick_time_label">Time: </string>
 
     <!--SUMMARY-->
     <string name="activity_summary_score">Your score: %1$d</string>

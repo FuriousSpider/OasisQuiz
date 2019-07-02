@@ -35,11 +35,11 @@ class SummaryActivity : BaseActivity<SummaryPresenter>() {
 
     fun renderData() {
         val score = intent?.extras?.getInt(EXTRA_SCORE) ?: 0
-        val time = intent?.extras?.getInt(EXTRA_TIME, -1) ?: -1
+        val time = intent?.extras?.getDouble(EXTRA_TIME, -1.0) ?: -1.0
 
         activitySummaryScore.text = getString(R.string.activity_summary_score, score)
-        if (time != -1) {
-            activitySummaryTime.text = getString(R.string.activity_summary_time, DecimalFormat("##.##").format(time / 1000.0))
+        if (time != -1.0) {
+            activitySummaryTime.text = getString(R.string.activity_summary_time, DecimalFormat("##.##").format(time))
             activitySummaryTime.visibility = View.VISIBLE
         } else {
             activitySummaryTime.visibility = View.GONE

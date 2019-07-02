@@ -1,5 +1,6 @@
 package com.furiousspider.oasisquiz.ui.activities.game.single.quick
 
+import android.os.CountDownTimer
 import com.furiousspider.oasisquiz.ui.activities.game.single.quick.model.QuickSingleGameModelCreator
 import com.furiousspider.oasisquiz.ui.base.BasePresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -12,6 +13,7 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
     override fun onCreate() {
         view?.setScore(state.score)
         loadData()
+        resetCountDownTimer()
     }
 
     private fun loadData() {
@@ -35,6 +37,7 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
     fun goToNextScreen() {
         view?.let {
             if (it.isItemLast()) {
+                stopCountDownTimer()
                 view?.showSummaryScreen(state.score, state.time)
             } else {
                 view?.goToNextQuestion()
@@ -43,6 +46,24 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
     }
 
     fun goToMenu() {
+        stopCountDownTimer()
         view?.goToMenu()
+    }
+
+    fun resetCountDownTimer() {
+        state.countDownTimer?.cancel()
+        state.countDownTimer = object : CountDownTimer(state.maxTime * 1000L, (1000 * state.timeDivider).toLong()) {
+            override fun onFinish() {
+                goToNextScreen()
+            }
+            override fun onTick(millisUntilFinished: Long) {
+                state.time += state.timeDivider
+                view?.updateCountDownTimer(millisUntilFinished / 1000)
+            }
+        }.start()
+    }
+
+    private fun stopCountDownTimer() {
+        state.countDownTimer?.cancel()
     }
 }
