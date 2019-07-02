@@ -18,14 +18,14 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
 
     private fun loadData() {
         registerSubscription(QuickSingleGameModelCreator().create()
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribe({
-                view?.loadItems(it)
-            }, {
-                view?.showError("QuickSingleGamePresenter - loadData - error loading question")
-                it.printStackTrace()
-            })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe({
+                    view?.loadItems(it)
+                }, {
+                    view?.showError("QuickSingleGamePresenter - loadData - error loading question")
+                    it.printStackTrace()
+                })
         )
     }
 
@@ -35,10 +35,11 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
     }
 
     fun goToNextScreen() {
+        state.time += System.currentTimeMillis() - state.questionStartTime
         view?.let {
             if (it.isItemLast()) {
                 stopCountDownTimer()
-                view?.showSummaryScreen(state.score, state.time)
+                view?.showSummaryScreen(state.score, state.time / 1000.0)
             } else {
                 view?.goToNextQuestion()
             }
@@ -52,15 +53,17 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
 
     fun resetCountDownTimer() {
         state.countDownTimer?.cancel()
-        state.countDownTimer = object : CountDownTimer(state.maxTime * 1000L, (1000 * state.timeDivider).toLong()) {
+        state.countDownTimer = object : CountDownTimer(state.maxTime * 1000L, 500) {
             override fun onFinish() {
                 goToNextScreen()
             }
+
             override fun onTick(millisUntilFinished: Long) {
-                state.time += state.timeDivider
                 view?.updateCountDownTimer(millisUntilFinished / 1000)
             }
         }.start()
+
+        state.questionStartTime = System.currentTimeMillis()
     }
 
     private fun stopCountDownTimer() {
