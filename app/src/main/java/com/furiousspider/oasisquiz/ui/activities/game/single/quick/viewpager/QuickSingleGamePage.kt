@@ -1,7 +1,7 @@
 package com.furiousspider.oasisquiz.ui.activities.game.single.quick.viewpager
 
 import android.view.View
-import android.widget.Button
+import android.widget.TextView
 import com.furiousspider.oasisquiz.R
 import com.furiousspider.oasisquiz.ui.activities.game.single.quick.model.QuickSingleGameModel
 import com.furiousspider.oasisquiz.ui.base.PageItem
@@ -13,7 +13,7 @@ class QuickSingleGamePage(private val model: QuickSingleGameModel) : PageItem() 
     var onIncorrectButtonClick: (() -> Unit)? = null
 
     private var correctAnswerPosition = 0
-    private val buttonList = ArrayList<Button>()
+    private val buttonList = ArrayList<TextView>()
 
     override val layoutId: Int
         get() = R.layout.item_game_single_quick

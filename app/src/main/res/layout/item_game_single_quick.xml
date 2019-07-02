@@ -4,76 +4,108 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/itemGameSingleQuickHorizontalLine1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.50" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/itemGameSingleQuickHorizontalLine2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/itemGameSingleQuickVerticalLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.50" />
-
-    <TextView
-        android:id="@+id/itemGameSingleQuickQuestion"
+    <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@android:color/darker_gray"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@id/itemGameSingleQuickHorizontalLine1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/itemGameSingleQuickAnswer1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@android:color/holo_green_light"
-        app:layout_constraintBottom_toTopOf="@id/itemGameSingleQuickHorizontalLine2"
-        app:layout_constraintEnd_toStartOf="@id/itemGameSingleQuickVerticalLine"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/itemGameSingleQuickHorizontalLine1" />
-
-    <Button
-        android:id="@+id/itemGameSingleQuickAnswer2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@android:color/holo_blue_light"
-        app:layout_constraintBottom_toBottomOf="@id/itemGameSingleQuickAnswer1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/itemGameSingleQuickVerticalLine"
-        app:layout_constraintTop_toTopOf="@id/itemGameSingleQuickAnswer1" />
-
-    <Button
-        android:id="@+id/itemGameSingleQuickAnswer3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@android:color/holo_red_light"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/itemGameSingleQuickVerticalLine"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/itemGameSingleQuickHorizontalLine2" />
-
-    <Button
-        android:id="@+id/itemGameSingleQuickAnswer4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@android:color/holo_orange_light"
-        app:layout_constraintBottom_toBottomOf="@id/itemGameSingleQuickAnswer3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/itemGameSingleQuickVerticalLine"
-        app:layout_constraintTop_toTopOf="@id/itemGameSingleQuickAnswer3" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/QuestionBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/itemGameSingleQuickHorizontalLine1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.50" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/itemGameSingleQuickHorizontalLine2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.75" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/itemGameSingleQuickVerticalLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.50" />
+
+            <TextView
+                android:id="@+id/itemGameSingleQuickQuestion"
+                style="@style/QuestionLabel"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/itemGameSingleQuickHorizontalLine1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/itemGameSingleQuickAnswer1"
+                style="@style/AnswerButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@id/itemGameSingleQuickHorizontalLine2"
+                app:layout_constraintEnd_toStartOf="@id/itemGameSingleQuickVerticalLine"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/itemGameSingleQuickHorizontalLine1" />
+
+            <TextView
+                android:id="@+id/itemGameSingleQuickAnswer2"
+                style="@style/AnswerButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@id/itemGameSingleQuickHorizontalLine2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/itemGameSingleQuickVerticalLine"
+                app:layout_constraintTop_toBottomOf="@id/itemGameSingleQuickHorizontalLine1" />
+
+            <TextView
+                android:id="@+id/itemGameSingleQuickAnswer3"
+                style="@style/AnswerButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/itemGameSingleQuickVerticalLine"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/itemGameSingleQuickHorizontalLine2" />
+
+            <TextView
+                android:id="@+id/itemGameSingleQuickAnswer4"
+                style="@style/AnswerButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/itemGameSingleQuickVerticalLine"
+                app:layout_constraintTop_toBottomOf="@id/itemGameSingleQuickHorizontalLine2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,20 @@ class QuickSingleGameModelCreator {
                     question = "Are you ok?",
                     correctAnswer = "OK",
                     incorrectAnswers = listOf("I'm not feeling so good", "Bad", "It used to be better"),
+                    image = null),
+            QuickSingleGameModel(
+                    id = 1,
+                    questionType = QuestionType.SIMPLE_QUESTION,
+                    question = "Are you ok?",
+                    correctAnswer = "OK",
+                    incorrectAnswers = listOf("I'm not feeling so good", "Bad", "It used to be better"),
+                    image = null),
+            QuickSingleGameModel(
+                    id = 1,
+                    questionType = QuestionType.SIMPLE_QUESTION,
+                    question = "Are you ok?",
+                    correctAnswer = "OK",
+                    incorrectAnswers = listOf("I'm not feeling so good", "Bad", "It used to be better"),
                     image = null)
 
     ))

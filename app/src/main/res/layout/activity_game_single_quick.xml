@@ -6,14 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ui.activities.splash.SplashActivity">
 
-    <TextView
-        android:id="@+id/activityGameSingleQuickScore"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/activityGameSingleQuickScoreToolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/activityGameSingleQuickScore"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp" />
+    </androidx.cardview.widget.CardView>
 
     <com.furiousspider.oasisquiz.ui.views.NonSwipeableViewPager
         android:id="@+id/activityGameSingleQuickViewPager"
@@ -22,5 +28,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activityGameSingleQuickScore" />
+        app:layout_constraintTop_toBottomOf="@id/activityGameSingleQuickScoreToolbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
