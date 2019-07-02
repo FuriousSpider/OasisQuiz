@@ -47,7 +47,7 @@ class QuickSingleGameActivity : BaseActivity<QuickSingleGamePresenter>() {
     }
 
     private fun onIncorrectAnswerClick() {
-        presenter.goToNextScreen()
+        presenter.onIncorrectAnswerClick()
     }
 
     fun setScore(score: Int) {

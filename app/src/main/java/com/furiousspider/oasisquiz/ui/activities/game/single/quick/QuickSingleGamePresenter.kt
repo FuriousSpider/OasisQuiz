@@ -36,6 +36,11 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
         goToNextScreen()
     }
 
+    fun onIncorrectAnswerClick() {
+        state.questionTime = System.currentTimeMillis() - state.questionTime
+        goToNextScreen()
+    }
+
     fun goToNextScreen() {
         state.time += state.questionTime
         view?.let {
