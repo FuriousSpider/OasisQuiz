@@ -6,6 +6,6 @@ data class QuickSingleGameState(
         val maxTime: Int = 15,
         var score: Int = 0,
         var time: Long = 0,
-        var questionStartTime: Long = 0L,
+        var questionTime: Long = 0L,
         var countDownTimer: CountDownTimer? = null
 )

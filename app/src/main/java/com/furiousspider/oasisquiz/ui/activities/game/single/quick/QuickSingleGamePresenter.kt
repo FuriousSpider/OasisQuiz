@@ -30,12 +30,14 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
     }
 
     fun onCorrectAnswerClick() {
+        state.questionTime = System.currentTimeMillis() - state.questionTime
+        state.score += ((1 - (state.questionTime.toDouble() / (state.maxTime * 1000))) * 1000).toInt()
         view?.setScore(++state.score)
         goToNextScreen()
     }
 
     fun goToNextScreen() {
-        state.time += System.currentTimeMillis() - state.questionStartTime
+        state.time += state.questionTime
         view?.let {
             if (it.isItemLast()) {
                 stopCountDownTimer()
@@ -63,7 +65,7 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
             }
         }.start()
 
-        state.questionStartTime = System.currentTimeMillis()
+        state.questionTime = System.currentTimeMillis()
     }
 
     private fun stopCountDownTimer() {
