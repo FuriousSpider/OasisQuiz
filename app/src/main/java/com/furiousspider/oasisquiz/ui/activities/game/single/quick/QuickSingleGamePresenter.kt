@@ -41,7 +41,12 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
         goToNextScreen()
     }
 
-    fun goToNextScreen() {
+    fun onAnswerTimeout() {
+        state.questionTime = System.currentTimeMillis() - state.questionTime
+        goToNextScreen()
+    }
+
+    private fun goToNextScreen() {
         state.time += state.questionTime
         view?.let {
             if (it.isItemLast()) {
@@ -62,7 +67,7 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
         state.countDownTimer?.cancel()
         state.countDownTimer = object : CountDownTimer(state.maxTime * 1000L, 500) {
             override fun onFinish() {
-                goToNextScreen()
+                onAnswerTimeout()
             }
 
             override fun onTick(millisUntilFinished: Long) {
