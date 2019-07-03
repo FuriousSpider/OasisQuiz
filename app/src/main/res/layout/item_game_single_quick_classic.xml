@@ -20,38 +20,39 @@
             android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/itemGameSingleQuickHorizontalLine1"
+                android:id="@+id/itemGameSingleQuickClassicHorizontalLine1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.50" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/itemGameSingleQuickHorizontalLine2"
+                android:id="@+id/itemGameSingleQuickClassicHorizontalLine2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.75" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/itemGameSingleQuickVerticalLine"
+                android:id="@+id/itemGameSingleQuickClassicVerticalLine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.50" />
 
             <TextView
-                android:id="@+id/itemGameSingleQuickQuestion"
+                android:id="@+id/itemGameSingleQuickClassicQuestion"
                 style="@style/QuestionLabel"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintBottom_toTopOf="@id/itemGameSingleQuickHorizontalLine1"
+                android:padding="24dp"
+                app:layout_constraintBottom_toTopOf="@id/itemGameSingleQuickClassicHorizontalLine1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/itemGameSingleQuickAnswer1"
+                android:id="@+id/itemGameSingleQuickClassicAnswer1"
                 style="@style/AnswerButton"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -59,13 +60,13 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@id/itemGameSingleQuickHorizontalLine2"
-                app:layout_constraintEnd_toStartOf="@id/itemGameSingleQuickVerticalLine"
+                app:layout_constraintBottom_toTopOf="@id/itemGameSingleQuickClassicHorizontalLine2"
+                app:layout_constraintEnd_toStartOf="@id/itemGameSingleQuickClassicVerticalLine"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/itemGameSingleQuickHorizontalLine1" />
+                app:layout_constraintTop_toBottomOf="@id/itemGameSingleQuickClassicHorizontalLine1" />
 
             <TextView
-                android:id="@+id/itemGameSingleQuickAnswer2"
+                android:id="@+id/itemGameSingleQuickClassicAnswer2"
                 style="@style/AnswerButton"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -73,13 +74,13 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@id/itemGameSingleQuickHorizontalLine2"
+                app:layout_constraintBottom_toTopOf="@id/itemGameSingleQuickClassicHorizontalLine2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/itemGameSingleQuickVerticalLine"
-                app:layout_constraintTop_toBottomOf="@id/itemGameSingleQuickHorizontalLine1" />
+                app:layout_constraintStart_toEndOf="@id/itemGameSingleQuickClassicVerticalLine"
+                app:layout_constraintTop_toBottomOf="@id/itemGameSingleQuickClassicHorizontalLine1" />
 
             <TextView
-                android:id="@+id/itemGameSingleQuickAnswer3"
+                android:id="@+id/itemGameSingleQuickClassicAnswer3"
                 style="@style/AnswerButton"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -88,12 +89,12 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/itemGameSingleQuickVerticalLine"
+                app:layout_constraintEnd_toStartOf="@id/itemGameSingleQuickClassicVerticalLine"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/itemGameSingleQuickHorizontalLine2" />
+                app:layout_constraintTop_toBottomOf="@id/itemGameSingleQuickClassicHorizontalLine2" />
 
             <TextView
-                android:id="@+id/itemGameSingleQuickAnswer4"
+                android:id="@+id/itemGameSingleQuickClassicAnswer4"
                 style="@style/AnswerButton"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -103,9 +104,8 @@
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/itemGameSingleQuickVerticalLine"
-                app:layout_constraintTop_toBottomOf="@id/itemGameSingleQuickHorizontalLine2" />
-
+                app:layout_constraintStart_toEndOf="@id/itemGameSingleQuickClassicVerticalLine"
+                app:layout_constraintTop_toBottomOf="@id/itemGameSingleQuickClassicHorizontalLine2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

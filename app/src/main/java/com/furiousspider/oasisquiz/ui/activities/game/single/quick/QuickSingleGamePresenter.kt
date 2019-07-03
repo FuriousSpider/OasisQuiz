@@ -47,6 +47,7 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
     }
 
     private fun goToNextScreen() {
+        view?.hideKeyboard()
         state.time += state.questionTime
         view?.let {
             if (it.isItemLast()) {
@@ -59,6 +60,7 @@ class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<Qu
     }
 
     fun goToMenu() {
+        view?.hideKeyboard()
         stopCountDownTimer()
         view?.goToMenu()
     }

@@ -8,6 +8,7 @@ import com.furiousspider.oasisquiz.ui.activities.game.single.quick.viewpager.Qui
 import com.furiousspider.oasisquiz.ui.base.BaseActivity
 import com.furiousspider.oasisquiz.ui.views.ReturnDialog
 import com.furiousspider.oasisquiz.utils.Router
+import com.furiousspider.oasisquiz.utils.hideKeyboard
 import kotlinx.android.synthetic.main.activity_game_single_quick.*
 
 class QuickSingleGameActivity : BaseActivity<QuickSingleGamePresenter>() {
@@ -19,6 +20,8 @@ class QuickSingleGameActivity : BaseActivity<QuickSingleGamePresenter>() {
 
         activityGameSingleQuickViewPager.clearOnPageChangeListeners()
         activityGameSingleQuickViewPager.addOnPageChangeListener(onPageChangeListener)
+
+        activityGameSingleQuickExitButton.setOnClickListener { onBackPressed() }
     }
 
     override fun onBackPressed() {
@@ -70,5 +73,9 @@ class QuickSingleGameActivity : BaseActivity<QuickSingleGamePresenter>() {
 
     fun updateCountDownTimer(time: Long) {
         activityGameSingleQuickTimer.text = time.toString()
+    }
+
+    fun hideKeyboard() {
+        activityGameSingleQuickTimer.hideKeyboard()
     }
 }

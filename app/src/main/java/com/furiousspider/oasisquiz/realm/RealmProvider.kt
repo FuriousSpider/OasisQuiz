@@ -21,16 +21,54 @@ object RealmProvider {
         }
     }
 
-    fun <T : RealmObject> getBy(clazz: Class<T>, keyName: String, id: String): T? {
+    fun <T : RealmObject> insertOrUpdate(objects: List<T>): List<T> {
+        val realm = Realm.getDefaultInstance()
+        realm.beginTransaction()
+        realm.insertOrUpdate(objects)
+        realm.commitTransaction()
+        realm.close()
+        return objects
+    }
+
+    fun <T : RealmObject> findAll(clazz: Class<T>): List<T> {
+        val realm = Realm.getDefaultInstance()
+        val result = realm.where(clazz).findAll()
+        result?.let {
+            val resultObject = realm.copyFromRealm(result)
+            realm.close()
+            return resultObject
+        } ?: run {
+            realm.close()
+            return ArrayList()
+        }
+    }
+
+    fun <T : RealmObject> findBy(clazz: Class<T>, keyName: String, id: String): T? {
         val realm = Realm.getDefaultInstance()
         val result = realm.where(clazz).equalTo(keyName, id).findFirst()
         result?.let {
             val resultObject = realm.copyFromRealm(it)
             realm.close()
             return resultObject
-        } ?:kotlin.run {
+        } ?: run {
             realm.close()
             return null
         }
+    }
+
+    fun <T : RealmObject> deleteAll(clazz: Class<T>, innerDeletion: (T.() -> Unit)? = null) {
+        val realm = Realm.getDefaultInstance()
+        val result = realm.where(clazz).findAll()
+        realm.beginTransaction()
+        result?.let {
+            innerDeletion?.let {
+                result.forEach {
+                    it.innerDeletion()
+                }
+            }
+            result.deleteAllFromRealm()
+        }
+        realm.commitTransaction()
+        realm.close()
     }
 }

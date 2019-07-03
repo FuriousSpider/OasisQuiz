@@ -9,6 +9,9 @@
     <!--SINGLE-QUICK-->
     <string name="activity_game_single_quick_score_label">Score: %1$d</string>
     <string name="activity_game_single_quick_time_label">Time: </string>
+    <string name="activity_game_single_quick_range_accept">Accept</string>
+    <string name="activity_game_single_quick_range_clear">Clear</string>
+    <string name="activity_game_single_quick_range_answer_hint">Write your answer here!</string>
 
     <!--SUMMARY-->
     <string name="activity_summary_score">Your score: %1$d</string>
@@ -20,4 +23,7 @@
     <string name="dialog_return_title">Do you really want to quit the game?</string>
     <string name="dialog_return_ok_button">Quit</string>
     <string name="dialog_return_cancel_button">Cancel</string>
+
+    <!--ICONS-->
+    <string name="icon_exit_description">Exit</string>
 </resources>

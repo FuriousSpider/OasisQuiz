@@ -29,6 +29,11 @@
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
+    <!--EDIT TEXT-->
+    <style name="AnswerEditText">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
     <!--BACKGROUNDS-->
     <style name="QuestionBackground">
         <item name="android:background">@color/colorPrimaryDark</item>

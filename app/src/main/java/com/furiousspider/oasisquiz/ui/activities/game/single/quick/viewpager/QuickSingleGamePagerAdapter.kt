@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.furiousspider.oasisquiz.ui.activities.game.single.quick.model.QuickSingleGameModel
+import com.furiousspider.oasisquiz.ui.base.PageItem
+import com.furiousspider.oasisquiz.utils.QuestionType
 
 class QuickSingleGamePagerAdapter(private val context: Context) : PagerAdapter() {
 
@@ -21,12 +23,28 @@ class QuickSingleGamePagerAdapter(private val context: Context) : PagerAdapter()
     override fun getCount(): Int = items.size
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val page = QuickSingleGamePage(items[position])
-        onCorrectButtonClick?.let {
-            page.onCorrectButtonClick = it
-        }
-        onIncorrectButtonClick?.let {
-            page.onIncorrectButtonClick = it
+        val page: PageItem
+        when (items[position].type) {
+            QuestionType.CLASSIC -> {
+                val newPage = QuickSingleGamePageClassic(items[position])
+                onCorrectButtonClick?.let {
+                    newPage.onCorrectButtonClick = it
+                }
+                onIncorrectButtonClick?.let {
+                    newPage.onIncorrectButtonClick = it
+                }
+                page = newPage
+            }
+            QuestionType.RANGE -> {
+                val newPage = QuickSingleGamePageRange(items[position])
+                onCorrectButtonClick?.let {
+                    newPage.onCorrectAnswer = it
+                }
+                onIncorrectButtonClick?.let {
+                    newPage.onIncorrectAnswer = it
+                }
+                page = newPage
+            }
         }
 
         val layout = LayoutInflater.from(context).inflate(page.layoutId, container, false)

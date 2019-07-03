@@ -5,10 +5,10 @@ import android.widget.TextView
 import com.furiousspider.oasisquiz.R
 import com.furiousspider.oasisquiz.ui.activities.game.single.quick.model.QuickSingleGameModel
 import com.furiousspider.oasisquiz.ui.base.PageItem
-import kotlinx.android.synthetic.main.item_game_single_quick.view.*
+import kotlinx.android.synthetic.main.item_game_single_quick_classic.view.*
 import kotlin.random.Random
 
-class QuickSingleGamePage(private val model: QuickSingleGameModel) : PageItem() {
+class QuickSingleGamePageClassic(private val model: QuickSingleGameModel) : PageItem() {
     var onCorrectButtonClick: (() -> Unit)? = null
     var onIncorrectButtonClick: (() -> Unit)? = null
 
@@ -16,16 +16,16 @@ class QuickSingleGamePage(private val model: QuickSingleGameModel) : PageItem() 
     private val buttonList = ArrayList<TextView>()
 
     override val layoutId: Int
-        get() = R.layout.item_game_single_quick
+        get() = R.layout.item_game_single_quick_classic
 
     override fun bindView(itemView: View) {
-        itemView.itemGameSingleQuickQuestion.text = model.question
+        itemView.itemGameSingleQuickClassicQuestion.text = model.question
 
         correctAnswerPosition = Random.nextInt(0, 4)
-        buttonList.add(itemView.itemGameSingleQuickAnswer1)
-        buttonList.add(itemView.itemGameSingleQuickAnswer2)
-        buttonList.add(itemView.itemGameSingleQuickAnswer3)
-        buttonList.add(itemView.itemGameSingleQuickAnswer4)
+        buttonList.add(itemView.itemGameSingleQuickClassicAnswer1)
+        buttonList.add(itemView.itemGameSingleQuickClassicAnswer2)
+        buttonList.add(itemView.itemGameSingleQuickClassicAnswer3)
+        buttonList.add(itemView.itemGameSingleQuickClassicAnswer4)
         var shift = false
         for (i in 0..3) {
             when {
@@ -38,12 +38,14 @@ class QuickSingleGamePage(private val model: QuickSingleGameModel) : PageItem() 
             }
         }
 
-        buttonList.forEach { it.setOnClickListener {button ->
-            if (buttonList.indexOf(button) == correctAnswerPosition) {
-                onCorrectButtonClick?.invoke()
-            } else {
-                onIncorrectButtonClick?.invoke()
+        buttonList.forEach {
+            it.setOnClickListener { button ->
+                if (buttonList.indexOf(button) == correctAnswerPosition) {
+                    onCorrectButtonClick?.invoke()
+                } else {
+                    onIncorrectButtonClick?.invoke()
+                }
             }
-        } }
+        }
     }
 }
