@@ -17,11 +17,11 @@ class MenuActivity : BaseActivity<MenuPresenter>() {
 
     fun initListeners() {
         activityMenuStartButton.setOnClickListener {
-            presenter.startQuickSingleGameActivity()
+            presenter.startSingleGameChooserActivity()
         }
     }
 
-    fun startQuickSingleGameActivity() {
-        Router.startQuickSingleGameActivity(this)
+    fun startSingleGameChooserActivity() {
+        Router.startSingleGameChooserActivity(this)
     }
 }

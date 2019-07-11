@@ -2,7 +2,8 @@ package com.furiousspider.oasisquiz.utils
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import com.furiousspider.oasisquiz.ui.activities.game.single.quick.QuickSingleGameActivity
+import com.furiousspider.oasisquiz.ui.activities.game.single.chooser.SingleGameChooserActivity
+import com.furiousspider.oasisquiz.ui.activities.game.single.game.SingleGameActivity
 import com.furiousspider.oasisquiz.ui.activities.menu.MenuActivity
 import com.furiousspider.oasisquiz.ui.activities.summary.SummaryActivity
 
@@ -14,9 +15,14 @@ object Router {
         activity.startActivity(intent)
     }
 
-    fun startQuickSingleGameActivity(activity: AppCompatActivity) {
-        val intent = Intent(activity, QuickSingleGameActivity::class.java)
+    fun startSingleGameActivity(activity: AppCompatActivity) {
+        val intent = Intent(activity, SingleGameActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+        activity.startActivity(intent)
+    }
+
+    fun startSingleGameChooserActivity(activity: AppCompatActivity) {
+        val intent = Intent(activity, SingleGameChooserActivity::class.java)
         activity.startActivity(intent)
     }
 

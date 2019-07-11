@@ -1,20 +1,20 @@
-package com.furiousspider.oasisquiz.ui.activities.game.single.quick.viewpager
+package com.furiousspider.oasisquiz.ui.activities.game.single.game.viewpager
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
-import com.furiousspider.oasisquiz.ui.activities.game.single.quick.model.QuickSingleGameModel
+import com.furiousspider.oasisquiz.ui.activities.game.single.game.model.SingleGameModel
 import com.furiousspider.oasisquiz.ui.base.PageItem
 import com.furiousspider.oasisquiz.utils.QuestionType
 
-class QuickSingleGamePagerAdapter(private val context: Context) : PagerAdapter() {
+class SingleGamePagerAdapter(private val context: Context) : PagerAdapter() {
 
     var onCorrectButtonClick: (() -> Unit)? = null
     var onIncorrectButtonClick: (() -> Unit)? = null
 
-    private var items: ArrayList<QuickSingleGameModel> = ArrayList()
+    private var items: ArrayList<SingleGameModel> = ArrayList()
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view == `object`
@@ -26,7 +26,7 @@ class QuickSingleGamePagerAdapter(private val context: Context) : PagerAdapter()
         val page: PageItem
         when (items[position].type) {
             QuestionType.CLASSIC -> {
-                val newPage = QuickSingleGamePageClassic(items[position])
+                val newPage = SingleGamePageClassic(items[position])
                 onCorrectButtonClick?.let {
                     newPage.onCorrectButtonClick = it
                 }
@@ -36,7 +36,7 @@ class QuickSingleGamePagerAdapter(private val context: Context) : PagerAdapter()
                 page = newPage
             }
             QuestionType.RANGE -> {
-                val newPage = QuickSingleGamePageRange(items[position])
+                val newPage = SingleGamePageRange(items[position])
                 onCorrectButtonClick?.let {
                     newPage.onCorrectAnswer = it
                 }
@@ -57,7 +57,7 @@ class QuickSingleGamePagerAdapter(private val context: Context) : PagerAdapter()
         container.removeView(`object` as View)
     }
 
-    fun loadItems(items: List<QuickSingleGameModel>) {
+    fun loadItems(items: List<SingleGameModel>) {
         this.items.addAll(items)
     }
 }

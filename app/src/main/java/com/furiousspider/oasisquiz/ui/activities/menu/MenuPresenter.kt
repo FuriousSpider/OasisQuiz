@@ -7,7 +7,7 @@ class MenuPresenter(view: MenuActivity) : BasePresenter<MenuActivity>(view) {
         view?.initListeners()
     }
 
-    fun startQuickSingleGameActivity() {
-        view?.startQuickSingleGameActivity()
+    fun startSingleGameChooserActivity() {
+        view?.startSingleGameChooserActivity()
     }
 }

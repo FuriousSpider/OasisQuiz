@@ -4,6 +4,7 @@
       "id": 0,
       "type": "CLASSIC",
       "difficulty": "EASY",
+      "category": "GENERAL",
       "question": "Where the center of the Light-Life Movement is located?",
       "correctAnswer": "Krościenko nad Dunajcem",
       "incorrectAnswers": [
@@ -17,6 +18,7 @@
       "id": 1,
       "type": "RANGE",
       "difficulty": "MEDIUM",
+      "category": "GENERAL",
       "question": "In which year the song of the year was called \"Hope - Jesus\"?",
       "correctAnswer": "2005",
       "incorrectAnswers": [
@@ -30,6 +32,7 @@
       "id": 2,
       "type": "CLASSIC",
       "difficulty": "EASY",
+      "category": "GENERAL",
       "question": "What is the meaning of the symbol depicted in the picture?",
       "correctAnswer": "Light-Life",
       "incorrectAnswers": [
@@ -40,6 +43,5 @@
         "Holy Trinity"
         ],
       "imageID": 1
-    }
-    ]
+    }]
 }

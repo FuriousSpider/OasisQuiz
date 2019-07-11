@@ -9,6 +9,7 @@ open class QuestionRealm(
         var id: Long = 0L,
         var type: String = "",
         var difficulty: String = "",
+        var category: String = "",
         var question: String = "",
         var correctAnswer: String = "",
         var incorrectAnswers: RealmList<StringRealm> = RealmList(),

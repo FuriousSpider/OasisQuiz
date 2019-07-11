@@ -30,6 +30,7 @@ class QuestionInteractor {
                         id = question.id,
                         type = question.type,
                         difficulty = question.difficulty,
+                        category = question.category,
                         question = question.question,
                         correctAnswer = question.correctAnswer,
                         incorrectAnswers = convertIncorrectAnswers(question.incorrectAnswers),

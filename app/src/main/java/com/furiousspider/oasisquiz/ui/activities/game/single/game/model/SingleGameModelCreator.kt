@@ -1,21 +1,22 @@
-package com.furiousspider.oasisquiz.ui.activities.game.single.quick.model
+package com.furiousspider.oasisquiz.ui.activities.game.single.game.model
 
 import com.furiousspider.oasisquiz.interactor.QuestionInteractor
 import com.furiousspider.oasisquiz.realm.entities.StringRealm
+import com.furiousspider.oasisquiz.ui.activities.game.single.game.SingleGameActivity
 import com.furiousspider.oasisquiz.utils.QuestionType
 import io.reactivex.Single
 import io.realm.RealmList
 import java.util.*
 import kotlin.collections.ArrayList
 
-class QuickSingleGameModelCreator {
+class SingleGameModelCreator {
 
     //TODO: implement images
-    fun create(): Single<List<QuickSingleGameModel>> =
+    fun create(): Single<List<SingleGameModel>> =
             QuestionInteractor().get()
                     .map { list ->
                         list.map {
-                            QuickSingleGameModel(
+                            SingleGameModel(
                                     id = it.id,
                                     type = QuestionType.valueOf(it.type),
                                     question = it.question,
@@ -36,7 +37,7 @@ class QuickSingleGameModelCreator {
             incorrectAnswers.forEach {
                 oldList.add(it.text)
             }
-            while (list.size < 3) {
+            while (list.size < SingleGameActivity.NUMBER_OF_QUESTIONS) {
                 val number = rand.nextInt(oldList.size)
                 list.add(oldList[number])
                 oldList.removeAt(number)

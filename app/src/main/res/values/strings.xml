@@ -6,12 +6,16 @@
     <!--MENU-->
     <string name="activity_menu_start">Start</string>
 
-    <!--SINGLE-QUICK-->
-    <string name="activity_game_single_quick_score_label">Score: %1$d</string>
-    <string name="activity_game_single_quick_time_label">Time: </string>
-    <string name="activity_game_single_quick_range_accept">Accept</string>
-    <string name="activity_game_single_quick_range_clear">Clear</string>
-    <string name="activity_game_single_quick_range_answer_hint">Write your answer here!</string>
+    <!--SINGLE-GAME-->
+    <string name="activity_game_single_score_label">Score: %1$d</string>
+    <string name="activity_game_single_time_label">Time: </string>
+    <string name="activity_game_single_range_accept">Accept</string>
+    <string name="activity_game_single_range_clear">Clear</string>
+    <string name="activity_game_single_range_answer_hint">Write your answer here!</string>
+
+    <!--SINGLE-CHOOSER-->
+    <string name="activity_game_single_chooser_title">Select your options:</string>
+    <string name="activity_game_single_chooser_start_button">Start game!</string>
 
     <!--SUMMARY-->
     <string name="activity_summary_score">Your score: %1$d</string>
@@ -26,4 +30,5 @@
 
     <!--ICONS-->
     <string name="icon_exit_description">Exit</string>
+    <string name="ic_arrow_drop_down_description">Drop down</string>
 </resources>

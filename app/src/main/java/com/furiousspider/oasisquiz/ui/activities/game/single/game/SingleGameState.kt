@@ -1,8 +1,8 @@
-package com.furiousspider.oasisquiz.ui.activities.game.single.quick
+package com.furiousspider.oasisquiz.ui.activities.game.single.game
 
 import android.os.CountDownTimer
 
-data class QuickSingleGameState(
+data class SingleGameState(
         val maxTime: Int = 20,
         var score: Int = 0,
         var time: Long = 0,

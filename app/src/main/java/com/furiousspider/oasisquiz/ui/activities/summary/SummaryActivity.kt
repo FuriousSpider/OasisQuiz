@@ -3,7 +3,7 @@ package com.furiousspider.oasisquiz.ui.activities.summary
 import android.os.Bundle
 import android.view.View
 import com.furiousspider.oasisquiz.R
-import com.furiousspider.oasisquiz.ui.activities.game.single.quick.QuickSingleGameActivity
+import com.furiousspider.oasisquiz.ui.activities.game.single.game.SingleGameActivity
 import com.furiousspider.oasisquiz.ui.base.BaseActivity
 import com.furiousspider.oasisquiz.utils.Router
 import kotlinx.android.synthetic.main.activity_summary.*
@@ -48,7 +48,7 @@ class SummaryActivity : BaseActivity<SummaryPresenter>() {
 
     fun startAnotherGame() {
         when (intent?.extras?.getString(EXTRA_PREVIOUS_GAME, "")) {
-            QuickSingleGameActivity::class.java.name -> Router.startQuickSingleGameActivity(this)
+            SingleGameActivity::class.java.name -> Router.startSingleGameActivity(this)
             else -> Router.startMenuActivity(this)
         }
     }

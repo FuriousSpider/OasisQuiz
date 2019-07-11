@@ -34,6 +34,11 @@
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
+    <!--SPINNER-->
+    <style name="CommonSpinner">
+        <item name="android:background">@android:color/white</item>
+    </style>
+
     <!--BACKGROUNDS-->
     <style name="QuestionBackground">
         <item name="android:background">@color/colorPrimaryDark</item>

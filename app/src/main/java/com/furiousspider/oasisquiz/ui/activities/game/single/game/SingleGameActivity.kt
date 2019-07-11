@@ -1,27 +1,34 @@
-package com.furiousspider.oasisquiz.ui.activities.game.single.quick
+package com.furiousspider.oasisquiz.ui.activities.game.single.game
 
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
 import com.furiousspider.oasisquiz.R
-import com.furiousspider.oasisquiz.ui.activities.game.single.quick.model.QuickSingleGameModel
-import com.furiousspider.oasisquiz.ui.activities.game.single.quick.viewpager.QuickSingleGamePagerAdapter
+import com.furiousspider.oasisquiz.ui.activities.game.single.game.model.SingleGameModel
+import com.furiousspider.oasisquiz.ui.activities.game.single.game.viewpager.SingleGamePagerAdapter
 import com.furiousspider.oasisquiz.ui.base.BaseActivity
 import com.furiousspider.oasisquiz.ui.views.ReturnDialog
 import com.furiousspider.oasisquiz.utils.Router
 import com.furiousspider.oasisquiz.utils.hideKeyboard
-import kotlinx.android.synthetic.main.activity_game_single_quick.*
+import kotlinx.android.synthetic.main.activity_game_single.*
 
-class QuickSingleGameActivity : BaseActivity<QuickSingleGamePresenter>() {
-    override fun createPresenter() = QuickSingleGamePresenter(this)
+class SingleGameActivity : BaseActivity<SingleGamePresenter>() {
+    companion object {
+        //TODO: change max size when more questions available
+        const val NUMBER_OF_QUESTIONS = 3
+    }
+
+    override fun createPresenter() = SingleGamePresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_game_single_quick)
+        setContentView(R.layout.activity_game_single)
+    }
 
-        activityGameSingleQuickViewPager.clearOnPageChangeListeners()
-        activityGameSingleQuickViewPager.addOnPageChangeListener(onPageChangeListener)
+    fun initListeners() {
+        activityGameSingleViewPager.clearOnPageChangeListeners()
+        activityGameSingleViewPager.addOnPageChangeListener(onPageChangeListener)
 
-        activityGameSingleQuickExitButton.setOnClickListener { onBackPressed() }
+        activityGameSingleExitButton.setOnClickListener { onBackPressed() }
     }
 
     override fun onBackPressed() {
@@ -37,12 +44,12 @@ class QuickSingleGameActivity : BaseActivity<QuickSingleGamePresenter>() {
         }
     }
 
-    fun loadItems(items: List<QuickSingleGameModel>) {
-        val pagerAdapter = QuickSingleGamePagerAdapter(this)
+    fun loadItems(items: List<SingleGameModel>) {
+        val pagerAdapter = SingleGamePagerAdapter(this)
         pagerAdapter.loadItems(items)
         pagerAdapter.onCorrectButtonClick = this::onCorrectAnswerClick
         pagerAdapter.onIncorrectButtonClick = this::onIncorrectAnswerClick
-        activityGameSingleQuickViewPager.adapter = pagerAdapter
+        activityGameSingleViewPager.adapter = pagerAdapter
     }
 
     private fun onCorrectAnswerClick() {
@@ -54,13 +61,13 @@ class QuickSingleGameActivity : BaseActivity<QuickSingleGamePresenter>() {
     }
 
     fun setScore(score: Int) {
-        activityGameSingleQuickScore.text = getString(R.string.activity_game_single_quick_score_label, score)
+        activityGameSingleScore.text = getString(R.string.activity_game_single_score_label, score)
     }
 
-    fun isItemLast(): Boolean = activityGameSingleQuickViewPager.isItemLast()
+    fun isItemLast(): Boolean = activityGameSingleViewPager.isItemLast()
 
     fun goToNextQuestion() {
-        activityGameSingleQuickViewPager.goToNextPage()
+        activityGameSingleViewPager.goToNextPage()
     }
 
     fun showSummaryScreen(score: Int, time: Double) {
@@ -72,10 +79,10 @@ class QuickSingleGameActivity : BaseActivity<QuickSingleGamePresenter>() {
     }
 
     fun updateCountDownTimer(time: Long) {
-        activityGameSingleQuickTimer.text = time.toString()
+        activityGameSingleTimer.text = time.toString()
     }
 
     fun hideKeyboard() {
-        activityGameSingleQuickTimer.hideKeyboard()
+        activityGameSingleTimer.hideKeyboard()
     }
 }

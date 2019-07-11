@@ -1,29 +1,30 @@
-package com.furiousspider.oasisquiz.ui.activities.game.single.quick
+package com.furiousspider.oasisquiz.ui.activities.game.single.game
 
 import android.os.CountDownTimer
-import com.furiousspider.oasisquiz.ui.activities.game.single.quick.model.QuickSingleGameModelCreator
+import com.furiousspider.oasisquiz.ui.activities.game.single.game.model.SingleGameModelCreator
 import com.furiousspider.oasisquiz.ui.base.BasePresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class QuickSingleGamePresenter(view: QuickSingleGameActivity) : BasePresenter<QuickSingleGameActivity>(view) {
+class SingleGamePresenter(view: SingleGameActivity) : BasePresenter<SingleGameActivity>(view) {
 
-    private val state = QuickSingleGameState()
+    private val state = SingleGameState()
 
     override fun onCreate() {
+        view?.initListeners()
         view?.setScore(state.score)
         loadData()
         resetCountDownTimer()
     }
 
     private fun loadData() {
-        registerSubscription(QuickSingleGameModelCreator().create()
+        registerSubscription(SingleGameModelCreator().create()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({
                     view?.loadItems(it)
                 }, {
-                    view?.showError("QuickSingleGamePresenter - loadData - error loading question")
+                    view?.showError("SingleGamePresenter - loadData - error loading question")
                     it.printStackTrace()
                 })
         )

@@ -1,14 +1,14 @@
-package com.furiousspider.oasisquiz.ui.activities.game.single.quick.viewpager
+package com.furiousspider.oasisquiz.ui.activities.game.single.game.viewpager
 
 import android.view.View
 import android.widget.TextView
 import com.furiousspider.oasisquiz.R
-import com.furiousspider.oasisquiz.ui.activities.game.single.quick.model.QuickSingleGameModel
+import com.furiousspider.oasisquiz.ui.activities.game.single.game.model.SingleGameModel
 import com.furiousspider.oasisquiz.ui.base.PageItem
-import kotlinx.android.synthetic.main.item_game_single_quick_classic.view.*
+import kotlinx.android.synthetic.main.item_game_single_classic.view.*
 import kotlin.random.Random
 
-class QuickSingleGamePageClassic(private val model: QuickSingleGameModel) : PageItem() {
+class SingleGamePageClassic(private val model: SingleGameModel) : PageItem() {
     var onCorrectButtonClick: (() -> Unit)? = null
     var onIncorrectButtonClick: (() -> Unit)? = null
 
@@ -16,16 +16,16 @@ class QuickSingleGamePageClassic(private val model: QuickSingleGameModel) : Page
     private val buttonList = ArrayList<TextView>()
 
     override val layoutId: Int
-        get() = R.layout.item_game_single_quick_classic
+        get() = R.layout.item_game_single_classic
 
     override fun bindView(itemView: View) {
-        itemView.itemGameSingleQuickClassicQuestion.text = model.question
+        itemView.itemGameSingleClassicQuestion.text = model.question
 
         correctAnswerPosition = Random.nextInt(0, 4)
-        buttonList.add(itemView.itemGameSingleQuickClassicAnswer1)
-        buttonList.add(itemView.itemGameSingleQuickClassicAnswer2)
-        buttonList.add(itemView.itemGameSingleQuickClassicAnswer3)
-        buttonList.add(itemView.itemGameSingleQuickClassicAnswer4)
+        buttonList.add(itemView.itemGameSingleClassicAnswer1)
+        buttonList.add(itemView.itemGameSingleClassicAnswer2)
+        buttonList.add(itemView.itemGameSingleClassicAnswer3)
+        buttonList.add(itemView.itemGameSingleClassicAnswer4)
         var shift = false
         for (i in 0..3) {
             when {

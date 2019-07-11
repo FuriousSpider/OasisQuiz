@@ -26,10 +26,14 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activities.game.single.quick.QuickSingleGameActivity"
+            android:name=".ui.activities.game.single.game.SingleGameActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.activities.game.single.chooser.SingleGameChooserActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activities.summary.SummaryActivity"
             android:configChanges="orientation"
