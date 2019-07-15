@@ -15,7 +15,7 @@ class SingleGameModelCreator {
     fun create(): Single<List<SingleGameModel>> =
             QuestionInteractor().get()
                     .map { list ->
-                        list.map {
+                        list.shuffled().take(SingleGameActivity.NUMBER_OF_QUESTIONS).map {
                             SingleGameModel(
                                     id = it.id,
                                     type = QuestionType.valueOf(it.type),
@@ -37,7 +37,7 @@ class SingleGameModelCreator {
             incorrectAnswers.forEach {
                 oldList.add(it.text)
             }
-            while (list.size < SingleGameActivity.NUMBER_OF_QUESTIONS) {
+            while (list.size < 3) {
                 val number = rand.nextInt(oldList.size)
                 list.add(oldList[number])
                 oldList.removeAt(number)

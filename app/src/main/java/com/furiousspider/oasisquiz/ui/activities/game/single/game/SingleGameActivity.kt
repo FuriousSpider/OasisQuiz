@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_game_single.*
 
 class SingleGameActivity : BaseActivity<SingleGamePresenter>() {
     companion object {
-        //TODO: change max size when more questions available
+        //TODO: change max size (up to 10) when more questions available
         const val NUMBER_OF_QUESTIONS = 3
     }
 
