@@ -2,6 +2,7 @@ package com.furiousspider.oasisquiz.interactor
 
 import android.content.Context
 import com.furiousspider.oasisquiz.realm.RealmProvider
+import com.furiousspider.oasisquiz.realm.entities.DataBaseVersionRealm
 import com.furiousspider.oasisquiz.realm.entities.QuestionRealm
 import com.furiousspider.oasisquiz.realm.entities.StringRealm
 import com.furiousspider.oasisquiz.ui.base.JsonDataWrapper
@@ -15,6 +16,7 @@ class QuestionInteractor {
             Single.just(Gson().fromJson(context.assets.open("questions").bufferedReader(), JsonDataWrapper::class.java))
                     .map {
                         deleteAll()
+                        RealmProvider.insertOrUpdate(DataBaseVersionRealm(version = it.version))
                         val converted = convertResponseToRealm(it.questions)
                         RealmProvider.insertOrUpdate(converted)
                     }
@@ -47,6 +49,7 @@ class QuestionInteractor {
     }
 
     private fun deleteAll() {
+        RealmProvider.deleteAll(DataBaseVersionRealm::class.java)
         RealmProvider.deleteAll(QuestionRealm::class.java) {
             incorrectAnswers.deleteAllFromRealm()
         }

@@ -50,6 +50,18 @@ class CustomSpinner @JvmOverloads constructor(
         dialog.dialogSpinnerRecyclerView.adapter = adapter
     }
 
+    fun selectItem(itemText: String?) {
+        itemText?.let {
+            if (items.contains(itemText)) {
+                viewSpinnerText.text = it
+            } else {
+                viewSpinnerText.text = items.first()
+            }
+        } ?: run {
+            viewSpinnerText.text = items.first()
+        }
+    }
+
     private fun showItemsDialog() {
         dialog.show()
     }

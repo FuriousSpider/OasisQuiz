@@ -1,22 +1,43 @@
 package com.furiousspider.oasisquiz.ui.activities.game.single.chooser
 
+import com.furiousspider.oasisquiz.ui.activities.game.single.chooser.model.SingleGameChooserModelCreator
 import com.furiousspider.oasisquiz.ui.base.BasePresenter
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class SingleGameChooserPresenter(view: SingleGameChooserActivity) : BasePresenter<SingleGameChooserActivity>(view) {
 
     override fun onCreate() {
         view?.initListeners()
-        view?.loadSpinners()
+        view?.initSpinners()
+        getDifficultyAndCategory()
     }
 
-    fun onDifficultyItemClick(text: String) {
-        //TODO: save to user preferences
-        view?.showError(text)
+    private fun getDifficultyAndCategory() {
+        registerSubscription(SingleGameChooserModelCreator().getDifficultyAndCategory()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe({
+                    view?.loadUserSettings(it)
+                }, {
+                    it.printStackTrace()
+                }))
     }
 
-    fun onCategoryItemClick(text: String) {
-        //TODO: save to user preferences
-        view?.showError(text)
+    fun onDifficultyItemClick(difficulty: String) {
+        registerSubscription(SingleGameChooserModelCreator().updateDifficulty(difficulty)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe()
+        )
+    }
+
+    fun onCategoryItemClick(category: String) {
+        registerSubscription(SingleGameChooserModelCreator().updateCategory(category)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe()
+        )
     }
 
     fun onStartGameButtonClick() {

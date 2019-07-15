@@ -23,9 +23,14 @@ class SingleGameChooserActivity : BaseActivity<SingleGameChooserPresenter>() {
         activityGameSingleChooserCategory.onItemClick = { presenter.onCategoryItemClick(it) }
     }
 
-    fun loadSpinners() {
+    fun initSpinners() {
         activityGameSingleChooserCategory.loadItems(QuestionCategory.values().map { it.toString() })
         activityGameSingleChooserDifficulty.loadItems(QuestionDifficulty.values().map { it.toString() })
+    }
+
+    fun loadUserSettings(it: Pair<String, String>?) {
+        activityGameSingleChooserDifficulty.selectItem(it?.first)
+        activityGameSingleChooserCategory.selectItem(it?.second)
     }
 
     fun startGameActivity() {

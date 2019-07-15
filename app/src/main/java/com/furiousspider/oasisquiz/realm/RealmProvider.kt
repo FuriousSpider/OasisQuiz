@@ -56,6 +56,19 @@ object RealmProvider {
         }
     }
 
+    fun <T : RealmObject> findBy(clazz: Class<T>, keyName: String, id: Long): T? {
+        val realm = Realm.getDefaultInstance()
+        val result = realm.where(clazz).equalTo(keyName, id).findFirst()
+        result?.let {
+            val resultObject = realm.copyFromRealm(it)
+            realm.close()
+            return resultObject
+        } ?: run {
+            realm.close()
+            return null
+        }
+    }
+
     fun <T : RealmObject> deleteAll(clazz: Class<T>, innerDeletion: (T.() -> Unit)? = null) {
         val realm = Realm.getDefaultInstance()
         val result = realm.where(clazz).findAll()

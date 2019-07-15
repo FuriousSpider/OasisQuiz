@@ -1,7 +1,7 @@
 package com.furiousspider.oasisquiz.utils
 
 enum class QuestionCategory {
-    ANY,
+    ALL,
     GENERAL,
     KROSCIENKO,
     BLACHNICKI
