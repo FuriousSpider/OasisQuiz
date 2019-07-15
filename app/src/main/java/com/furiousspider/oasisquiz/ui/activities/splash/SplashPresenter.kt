@@ -9,7 +9,6 @@ class SplashPresenter(view: SplashActivity) : BasePresenter<SplashActivity>(view
 
     override fun onCreate() {
         view?.initRealm()
-        //TODO: add checking if questions already loaded
         updateQuestions()
     }
 

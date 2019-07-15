@@ -13,13 +13,17 @@ import io.realm.RealmList
 
 class QuestionInteractor {
     fun update(context: Context): Single<List<QuestionRealm>> =
-            Single.just(Gson().fromJson(context.assets.open("questions").bufferedReader(), JsonDataWrapper::class.java))
-                    .map {
-                        deleteAll()
-                        RealmProvider.insertOrUpdate(DataBaseVersionRealm(version = it.version))
-                        val converted = convertResponseToRealm(it.questions)
-                        RealmProvider.insertOrUpdate(converted)
-                    }
+            SettingsInteractor().checkIfVersionIsUpToDate(context).map {
+                if (it) {
+                    RealmProvider.findAll(QuestionRealm::class.java)
+                } else {
+                    val questionList = Gson().fromJson(context.assets.open("questions").bufferedReader(), JsonDataWrapper::class.java)
+                    deleteAll()
+                    RealmProvider.insertOrUpdate(DataBaseVersionRealm(version = questionList.version))
+                    val converted = convertResponseToRealm(questionList.questions)
+                    RealmProvider.insertOrUpdate(converted)
+                }
+            }
 
     fun get(): Single<List<QuestionRealm>> =
             Single.fromCallable {
@@ -54,5 +58,4 @@ class QuestionInteractor {
             incorrectAnswers.deleteAllFromRealm()
         }
     }
-
 }

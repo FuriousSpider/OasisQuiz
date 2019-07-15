@@ -15,3 +15,7 @@ data class QuestionDataWrapper(
         val incorrectAnswers: List<String>,
         val imageID: Long
 )
+
+data class VersionDataWrapper(
+        val version: String
+)
