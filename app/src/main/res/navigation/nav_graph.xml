@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainMenuFragment">
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.oasis.oasisquiz.ui.main_menu.MainMenuFragment"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_quickGameFragment"
+            app:destination="@id/quickGameFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_optionsFragment"
+            app:destination="@id/optionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quickGameFragment"
+        android:name="com.oasis.oasisquiz.ui.quick_game.QuickGameFragment"
+        android:label="fragment_quick_game"
+        tools:layout="@layout/fragment_quick_game" />
+    <fragment
+        android:id="@+id/optionsFragment"
+        android:name="com.oasis.oasisquiz.ui.options.OptionsFragment"
+        android:label="fragment_options"
+        tools:layout="@layout/fragment_options" />
+</navigation>
