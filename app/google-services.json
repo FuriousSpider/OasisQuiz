@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "414328214192",
+    "project_id": "oasisquiz-d44be",
+    "storage_bucket": "oasisquiz-d44be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414328214192:android:cecc6750c653a15dc06175",
+        "android_client_info": {
+          "package_name": "com.oasis.oasisquiz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxnyn0iy0Qg64egLcFtzHHaEMgub5_2wA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
