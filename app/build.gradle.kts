@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.kapt)
-    id("com.google.gms.google-services")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -55,7 +55,7 @@ dependencies {
 
     // Firebase
     implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.database.ktx)
 
     // Navigation
     implementation(libs.androidx.navigation.fragment.ktx)
