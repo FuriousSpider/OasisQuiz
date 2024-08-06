@@ -13,6 +13,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFirebase() {
-        FirebaseApp.initializeApp(this);
+        FirebaseApp.initializeApp(this)
     }
 }
